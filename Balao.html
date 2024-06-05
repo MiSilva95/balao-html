@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="background.css" />
+    <title>Background</title>
+    <style>
+      #balao {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: red;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="balao" onclick="cliqueBalao()" onmouseout="sairBalao()"></div>
+    <script>
+      let tamanho = 200;
+      let cor = "red";
+      const balao = document.getElementById("balao");
+
+      function cliqueBalao() {
+        tamanho = tamanho + 10;
+
+        balao.style.width = tamanho + "px";
+        balao.style.height = tamanho + "px";
+
+        if (tamanho >= 420) {
+          tamanho = 200;
+        }
+
+        if (cor == "red") {
+          cor = "green";
+          balao.style.background = cor;
+        } else if (cor == "green") {
+          cor = "blue";
+          balao.style.background = cor;
+        } else {
+          cor = "red";
+          balao.style.background = cor;
+        }
+      }
+
+      function sairBalao() {
+        if (tamanho <= 200) {
+          return;
+        }
+
+        tamanho = tamanho - 5;
+
+        balao.style.width = tamanho + "px";
+        balao.style.height = tamanho + "px";
+
+        if (cor == "red") {
+          cor = "blue";
+          balao.style.background = cor;
+        } else if (cor == "blue") {
+          cor = "green";
+          balao.style.background = cor;
+        } else {
+          cor = "red";
+          balao.style.background = cor;
+        }
+      }
+    </script>
+  </body>
+</html>
